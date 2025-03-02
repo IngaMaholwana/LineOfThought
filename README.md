@@ -1,3 +1,3 @@
-# README
-
-A clone cor social media sides Booksdatabse the important part is the data and back end
+# ReadMe 
+social media post/book your thoughts experiences and goals limit characters availble post characters (kinda like old twitter)
+currently can twit/blog, engage with each other 

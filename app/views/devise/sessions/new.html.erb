@@ -1,0 +1,52 @@
+<div class="section is-flex is-justify-content-center">
+  <div class="box p-6 is-flex is-justify-content-center is-flex-direction-column">
+    <h2 class="title is-5 has-text-centered">Log in</h2>
+  
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: 'input' %>
+      </div>
+  
+      <% if devise_mapping.rememberable? %>
+        <div class="field mb-5">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+  
+      <div class="actions is-flex is-justify-content-center mb-3">
+        <%= f.submit "Log in", class: 'button is-link is-centered mr-3' %>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations'%>
+          <%= link_to "Sign up", new_registration_path(resource_name), class: "button"%>
+         <% end %>
+      </div>
+
+
+    <% end %>
+  
+    <% if Rails.env.production? %>
+      <%= render "devise/shared/links" %>
+    <% end %>
+
+    <% if Rails.env.development? %>
+      <div class=" box is-size-7 has-text-centered  mt-4">
+        <p>Test it out without an account! </p>
+        <div class="has-text-left mt-3">
+          <p>Email: <strong>example@example.com</strong> </p>
+          <p>Password: <strong>password</strong> </p>
+        </div>
+      </div>
+    <% end %>
+  
+  
+
+   
+  
+  </div>
+</div>

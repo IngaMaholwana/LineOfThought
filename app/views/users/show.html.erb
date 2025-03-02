@@ -1,0 +1,49 @@
+<section class="section">
+  <div>
+
+    <div class="mb-6 is-flex is-flex-direction-column is-align-items-center">
+      <%= image_tag @user.avatar_url, class: 'avatar__image mb-4' %>
+      <h1 class="title is-3"><%= @user.full_name %></h1>
+      <%= @user.email %>
+
+      <div>
+        <%= turbo_frame_tag dom_id(@user, :follow_counts) do %>
+          <div>
+            <%= link_to "Followers: ", followers_path(@user), class: "turbo-link", data: { turbo: false } %> <%= @user.followers.count %> |
+            <%= link_to "Following: ", followees_path(@user), class: "turbo-link", data: { turbo: false } %> <%= @user.followees.count %>
+          </div>
+        <% end %>
+      </div>
+
+      <% unless @user == current_user %>
+        <%= turbo_frame_tag dom_id(@user, :follow_buttons) do %>
+          <%= render partial: 'users/follow_buttons', locals: { user: @user} %>
+        <% end %>   
+      <% end %>
+      
+    </div>
+
+
+ 
+   
+    
+
+    
+    <div class="section box">
+      <h3 class="title is-4">Posts</h3>
+      <%= render @user.posts %>
+    </div>
+
+
+    <div class="section box">
+      <h3 class="title is-4">Comments</h3>
+      <%= render @user.comments %>
+    </div>
+  
+
+    <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
+    <%= link_to "Home", root_path %>
+  </div>
+</section>
+
+

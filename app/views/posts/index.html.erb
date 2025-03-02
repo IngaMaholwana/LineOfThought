@@ -1,0 +1,31 @@
+
+<section class="section p-3 m-3 is-flex is-align-items-center is-flex-direction-column post__container">
+  <% content_for :title, "Posts" %>
+  <h1 class="title mb-1">All Posts</h1>
+  <p class="is-size-7 mb-5">Discover someone new!</p>
+
+  <div class="is-flex is-justify-content-center buttons are-small mb-5">
+    <h3 class="px-2 button mb-0"><%= link_to 'Your feed', following_posts_path(current_user.id) %></h3> 
+    <h3 class="px-2 button mb-0"><%= link_to 'All users', users_path %></h3>
+    <h3 class="px-2 button mb-0"><%= link_to 'Your profile', user_path(current_user.id) %></h3>
+    <h3 class="mb-0">  <%= link_to "New post", new_post_path, class: "button is-link is-small"%>
+</h3>
+  </div>
+
+
+  
+    <% if @posts.any? %>  
+      <% @posts.reverse.each do |post| %>
+          <div class="card post__card">
+            <a href="<%= post_path(post) %>" class="has-text-black"><%= render post %></a>
+          </div>
+      <% end %>
+    <% else %>
+      <p class="is-italic">No posts yet</p>
+    <% end %>
+
+  <%= link_to "New post", new_post_path, class: "button is-link" %>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'p-4 is-hovered' %>
+</section>
+
+
