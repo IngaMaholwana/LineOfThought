@@ -71,7 +71,7 @@ end
 
 gem "devise", "~> 4.9"
 
-gem "hotwire-livereload", "~> 1.4", group: :development
+gem "hotwire-livereload", "~> 2.0", group: :development
 
 gem "omniauth"
 gem "omniauth-github", "~> 2.0.0 "
