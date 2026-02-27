@@ -1,0 +1,5 @@
+xh:
+  activerecord:
+    errors:
+      messages:
+        too_long: 'Umyalezo wakho umde kakhulu!'
